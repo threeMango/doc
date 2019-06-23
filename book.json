@@ -3,16 +3,31 @@
     "description": " study",
     "language": "zh",
     "plugins": [
-      "anchor-navigation-ex"
+      "anchor-navigation-ex",
+      "insert-logo",
+      "atoc",
+      "prism"
     ],
     "pluginsConfig": {
-    
       "anchor-navigation-ex": {
-        "isRewritePageTitle": true,
         "isShowTocTitleIcon": true,
         "tocLevel1Icon": "fa fa-hand-o-right",
         "tocLevel2Icon": "fa fa-hand-o-right",
         "tocLevel3Icon": "fa fa-hand-o-right"
-    }
+    },
+    "insert-logo": {
+      "url": "/img/logo.png",
+      "style": "background: none; max-height: 80px; min-height: 80px"
+    },
+    "atoc": {
+      "addClass": true,
+      "className": "atoc"
+  },
+  "prism": {
+    "css": [
+      "prismjs/themes/prism-tomorrow.css"
+    ]
+
+  }
     }
   }
