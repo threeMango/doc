@@ -1,6 +1,6 @@
 # Summary
 
-## 目录
+## --
 * [简介](README.md)
 * [项目](project.md)
 * [问题笔记](issue.md)
@@ -11,7 +11,8 @@
 
 ## 附录
 * [规范](other/standard.md)
-* [jwt](other/jwt.md)
+* [JWT](other/jwt.md)
 * [ThradLocal](other/threadlocal.md)
-* [flyway](other/flyway.md)
+* [FLYWAY](other/flyway.md)
+* [GIT](other/git.md)
 

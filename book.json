@@ -6,7 +6,8 @@
       "anchor-navigation-ex",
       "insert-logo",
       "atoc",
-      "prism"
+      "prism",
+      "copy-code-button"
     ],
     "pluginsConfig": {
       "anchor-navigation-ex": {
@@ -27,7 +28,6 @@
     "css": [
       "prismjs/themes/prism-tomorrow.css"
     ]
-
   }
     }
   }
