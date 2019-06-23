@@ -11,6 +11,7 @@
 
 ## 附录
 * [规范](other/standard.md)
+* [英语词汇](other/english.md)
 * [JWT](other/jwt.md)
 * [ThradLocal](other/threadlocal.md)
 * [FLYWAY](other/flyway.md)
