@@ -1,9 +1,8 @@
 # Summary
 
-## --
+## 基本
 * [简介](README.md)
-* [项目](project.md)
-* [问题笔记](issue.md)
+* [无归类的问题](issue.md)
 
 ## spring
 * [spring security](spring/spring-security.md)
@@ -11,9 +10,15 @@
 
 ## 附录
 * [规范](other/standard.md)
-* [英语词汇](other/english.md)
 * [JWT](other/jwt.md)
 * [ThradLocal](other/threadlocal.md)
 * [FLYWAY](other/flyway.md)
+
+## 快速查询
 * [GIT](other/git.md)
+* [linux](other/linux.md)
+* [docker](other/docker.md)
+
+## ENGLISH
+* [A-1](english/a.md)
 

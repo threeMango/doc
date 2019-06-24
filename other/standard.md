@@ -82,17 +82,18 @@ public class MenuServiceImpl implements MenuService {
  @Type(type = "org.hibernate.type.NumericBooleanType")
 ```
 
-### 关于DTO
+### 参数验证
 
 如果需要自定义验证规则: 看附录
 
 一般的从前台传过来的数据会用这个数据类型进行接收,这个时候需要对某些数据进行校验
-注意: 需要在 controller 接受实体的那个地方用`@Valid` ，否则不会验证
+注意: 
+1. 需要在 controller 接受实体的那个地方用`@Valid` ，否则不会验证
+2. 验证嵌套, 在需要验证的字段之上在加上`@Valid`
 
 ```java
 // 是否为空 javax.validation.constraints 这个包下有一些基本的,可以看下
 @NotEmpty
-
 
 ```
 
