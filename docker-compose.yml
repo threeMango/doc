@@ -3,8 +3,8 @@ services:
   gitbook_wiki:
     build:
       context: .
-      dockerfile: Dockerfile
-    container_name: node_gitbook
+      dockerfile: ./Dockerfile-gitbook
+    container_name: gitbook
     hostname: gitbook
     restart: always
     ports:

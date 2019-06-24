@@ -16,7 +16,7 @@ git add .
 ```
 
 * github 忽略文件
-
+i
 https://github.com/github/gitignore
 
 * 提交到本地仓库
