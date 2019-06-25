@@ -4,6 +4,66 @@
 
 ### 环境搭建
 
+[官方文档地址](https://docs.docker.com/install/linux/docker-ce/centos/)
+
+#### centos 7.3 + docker ce
+
+1. 移除之前的docker 
+
+```bash
+$ sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+
+```
+
+2. 安装docker 仓库
+
+```bash
+$ sudo yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2
+```
+
+3. 配置docker 仓库
+
+```bash
+$ sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+```
+
+4. 安装docker ce
+
+```bash
+# 安装cli
+$ sudo yum install docker-ce docker-ce-cli containerd.io
+
+# 查询所有版本
+$ yum list docker-ce --showduplicates | sort -r
+
+docker-ce.x86_64  3:18.09.1-3.el7                     docker-ce-stable
+docker-ce.x86_64  3:18.09.0-3.el7                     docker-ce-stable
+docker-ce.x86_64  18.06.1.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64  18.06.0.ce-3.el7                    docker-ce-stable
+
+# 安装指导版本  比如:docker-ce-18.09.1
+$ sudo yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io
+```
+
+5. 启动
+
+```bash
+$ sudo systemctl start docker
+```
+
+
 ### 镜像操作
 
 * 查看所有镜像
@@ -78,4 +138,12 @@ docker cp 宿主路径中文件      容器名:  容器路径
 # 容器 -> 宿主机
 docker  cp 容器名:  容器路径       宿主机路径
 ```
+
+## 附录
+
+### DockerFile
+
+### docker-compose
+
+
 

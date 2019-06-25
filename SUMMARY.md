@@ -10,6 +10,7 @@
 
 ## 附录
 * [规范](other/standard.md)
+* [JAVA参数校验](java/paramsCheck.md)
 * [JWT](other/jwt.md)
 * [ThradLocal](other/threadlocal.md)
 * [FLYWAY](other/flyway.md)
@@ -19,6 +20,7 @@
 * [linux](other/linux.md)
 * [docker](other/docker.md)
 * [gitbook](other/gitbook.md)
+* [nginx](other/nginx.md)
 
 ## ENGLISH
 * [A-1](english/a.md)
