@@ -145,5 +145,19 @@ docker  cp 容器名:  容器路径       宿主机路径
 
 ### docker-compose
 
+#### docker-compose 环境安装
+
+[官方教程](https://docs.docker.com/compose/install/)
+
+```bash
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+$ docker-compose --version
+```
+
 
 

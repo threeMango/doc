@@ -16,8 +16,8 @@ git add .
 ```
 
 * github 忽略文件
-i
-https://github.com/github/gitignore
+
+[https://github.com/github/gitignore](https://github.com/github/gitignore)
 
 * 提交到本地仓库
 
@@ -36,6 +36,13 @@ git commit -m "本次提交说明"
 ```bash
 # 第一次 加-u参数，把本地master推送到远端master,关联本地master分支和远程的master，简化推送或拉取命令
 git push -u origin master
+
 git push origin master
+
+git push
 ```
+
+## 分支操作
+
+
 

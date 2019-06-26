@@ -45,6 +45,10 @@ import java.lang.reflect.Field;
  *
  *          private String age;
  *      }
+ * 案例二：
+ *   @NotAloneNull.List({
+ *		@NotAloneNull(value = {"a","b"},message = "a,b 必须同时存在,或则不存在")
+ *   })
  */
 
 @Target({ElementType.TYPE})
@@ -60,6 +64,14 @@ public @interface NotAloneNull {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
+
+    @Target({ElementType.TYPE})
+    @Retention(RUNTIME)
+    @Documented
+    @interface List {
+        NotAloneNull[] value();
+    }
+
 
     class NotAloneNullValidator implements ConstraintValidator<NotAloneNull,Object> {
 
@@ -97,38 +109,4 @@ public @interface NotAloneNull {
 }
 ```
 
-```java
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-/**
- * 使用场景: 当一个对象里面需要多重添加判断的时候
- *
- * 使用案例:
- * @Data
- * @NotAloneNulls({
- *     @NotAloneNull(fields = {"name","age"},message = "name , age 必须同时为空 或则 非空"),
- *     @NotAloneNull(fields = {"name", "phone"}, message = "name , phone 必须同时为空 或则 非空")
- * })
- * public class UserDto {
- *
- *     private String name;
- *
- *     private String age;
- *
- *     private String phone;
- * }
- *
- */
-@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface ManyNotAloneNull {
-
-    NotAloneNull[] value();
-
-}
-```
 
