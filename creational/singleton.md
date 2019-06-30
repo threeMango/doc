@@ -329,15 +329,159 @@ public class Singleton implements Serializable {
 
 #### 反射攻击
 
+饿汉模式测试 - 结果: false
 
+```java
+public class Test {
+
+    public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        Class<Singleton> classObject = Singleton.class;
+
+        Constructor<Singleton> constructor = classObject.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        Singleton instance = constructor.newInstance();
+
+        System.out.println(instance == Singleton.getInstance());
+    }
+}
+```
+
+解决: 在外部要new 的时候, 给他抛出一个异常(这个方法只适合饿汉模式，以及静态内部类, 应为这两个都是在类对象生成的时候，就有了的, 延迟加载防不住)
+
+```java
+public class Singleton implements Serializable {
+
+    private final static Integer serialVersionUID = 123;
+
+    private final static Singleton instance;
+
+    static {
+        instance = new Singleton();
+    }
+
+    private Singleton() {
+        if (null == instance) {
+            throw new RuntimeException("单例模式禁止外部生成");
+        }
+    }
+
+    public static Singleton getInstance() {
+        return instance;
+    }
+
+    private Object readResolve() {
+        return instance;
+    }
+}
+```
+
+### enum 实现单例
+
+可以防止反射以及序列化(effective java 推荐的单例模式)
+
+```java
+public enum Singleton {
+    SINGLETON;
+    
+    public static Singleton getInstance() {
+        return SINGLETON;
+    }
+}
+```
+
+```java
+public class Test {
+
+    public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        Class<Singleton> classObject = Singleton.class;
+
+        Constructor<Singleton> constructor = classObject.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        Singleton instance = constructor.newInstance();
+
+        System.out.println(instance == Singleton.getInstance());
+    }
+}
+
+Exception in thread "main" java.lang.NoSuchMethodException: io.siberia.pattern.creational.singleton.Singleton.<init>()
+	at java.lang.Class.getConstructor0(Class.java:3069)
+	at java.lang.Class.getDeclaredConstructor(Class.java:2165)
+	at io.siberia.pattern.creational.singleton.Test.main(Test.java:12)
+```
+
+#### 容器单例模式
+
+和享元模式类型, 管理多个单例对象 - 单例对象比较多的情况下(非线程安全)
+
+```java
+public class Singleton {
+    private static Map<String,Object> map = new HashMap <String,Object>();
+
+    public static void putInstance(String key, Object instance) {
+        if (null == key && key.length() > 0 && null == instance) {
+            if (!map.containsKey(key)) {
+                map.put(key,instance);
+            }
+        }
+    }
+
+    public static Object getInstance(String key) {
+        return map.get(key);
+    }
+}
+```
 
 #### ThreadLocal
 
+线程唯一
+
+```java
+@Data
+public class UserInfoDto {
+
+    private static final ThreadLocal<UserInfoDto> info = new ThreadLocal<UserInfoDto>() {
+        @Override
+        protected UserInfoDto initialValue() {
+            return new UserInfoDto();
+        }
+    };
+
+    private String name;
+
+    private UserInfoDto() {}
+
+    public static UserInfoDto getInstance() {
+        return info.get();
+    }
+
+}
+```
+
 ## 应用
 
+* java.lang.Runtime
+
+```java
+public class Runtime {
+    private static Runtime currentRuntime = new Runtime();
 
 
+    public static Runtime getRuntime() {
+        return currentRuntime;
+    }
 
+    private Runtime() {}
+
+}
+```
+
+* java.awt.Desktop
+
+容器单例模式
+
+* spring 单例模式是整个应用程序的上下文, 我们这里是类
+
+* org.springframework.beans.factory.config.AbstractFactoryBean
 
 
 

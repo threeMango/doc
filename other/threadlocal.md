@@ -8,10 +8,6 @@
 
 ```java
 
-/**
- * 用户jwt 携带的信息
- *  ThreadLocal 线程单例模式
- */
 @Data
 public class UserInfoDto {
 
