@@ -16,11 +16,7 @@ git add .
 
 * github 忽略文件
 
-<<<<<<< HEAD
-https://github.com/github/gitignore
-=======
 [https://github.com/github/gitignore](https://github.com/github/gitignore)
->>>>>>> 9ecff5f2dd2b7074cf56be45bca7aed792f340ab
 
 * 提交到本地仓库
 
