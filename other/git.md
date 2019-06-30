@@ -44,5 +44,24 @@ git push origin master
 git pull origin master
 ```
 
+## 分支
+
+* 查看本地分支
+
+```bash
+git branch
+```
+
+* 查看远程分支
+
+```bash
+git branch -a
+```
+
+* 创建分支
+
+```bash
+git branch branchName
+```
 
 
