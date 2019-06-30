@@ -15,7 +15,7 @@ git add .
 ```
 
 * github 忽略文件
-i
+
 https://github.com/github/gitignore
 
 * 提交到本地仓库
@@ -37,4 +37,12 @@ git commit -m "本次提交说明"
 git push -u origin master
 git push origin master
 ```
+
+* 拉取远端数据
+
+```bash
+git pull origin master
+```
+
+
 
