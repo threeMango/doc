@@ -22,6 +22,7 @@
 * [docker](other/docker.md)
 * [gitbook](other/gitbook.md)
 * [nginx](other/nginx.md)
+<<<<<<< HEAD
 * [UML](other/uml.md)
 
 ## 附录
@@ -30,5 +31,8 @@
 * [JWT](other/jwt.md)
 * [ThradLocal](other/threadlocal.md)
 * [FLYWAY](other/flyway.md)
+=======
+* [arthas](other/arthas.md)
+>>>>>>> 9ecff5f2dd2b7074cf56be45bca7aed792f340ab
 
 
