@@ -2,12 +2,220 @@
 
 作用: 认证, 授权, 安全防护(防止csrf跨站伪攻击等)
 
-## 使用
+## 认证流程
 
-## 理解
+```uml
+@startuml
+
+user -> UsernamePasswordAuthenticationFilter: request
+UsernamePasswordAuthenticationFilter -> user: response
+
+@enduml
+```
+
+## 核心类
+
+### SecurityContextHolder
+
+保存应用程序中当前使用人的安全上下文
+
+### AuthenticationManager
+
+下面的都是以 `AuthenticationManager` 为基础, 进行用户认证操作 - 这里的不是源码
+
+```uml
+@startuml
+
+	Interface AuthenticationManager 
+	Class ProviderManager
+
+	Interface AuthenticationProvider
+	Class AbstractUserDetailsAuthenticationProvider
+	Class DaoAuthenticationProvider
+
+ 	AuthenticationManager <|.down. ProviderManager
+ 	ProviderManager o-right- AuthenticationProvider 
+	AuthenticationProvider <|.down. AbstractUserDetailsAuthenticationProvider 
+	AbstractUserDetailsAuthenticationProvider <|-down- DaoAuthenticationProvider
+
+@enduml
+```
+
+#### AuthenticationManager
+
+处理认证请求
+
+```java
+/**
+ * Processes an {@link Authentication} request.
+ */
+public interface AuthenticationManager {
+
+	Authentication authenticate(Authentication authentication)
+			throws AuthenticationException;
+}
+```
+
+#### ProviderManager
+
+AuthenticationManager 中的一个实现类, 进行认证操作
+
+```java
+public class ProviderManager implements AuthenticationManager, MessageSourceAware,
+		InitializingBean {
+
+	private List<AuthenticationProvider> providers = Collections.emptyList();
+
+	public Authentication authenticate(Authentication authentication)
+			throws AuthenticationException {
+		Authentication result = null;
+
+		for (AuthenticationProvider provider : providers) {
+			result = provider.authenticate(authentication);
+			copyDetails(authentication, result);
+		}
+
+		if (result == null && parent != null) {
+			result = parentResult = parent.authenticate(authentication);
+		}
+
+		return result;
+	}
+
+}
+```
+
+#### AuthenticationProvider
+
+ProviderManager 引用了 AuthenticationProvider接口集合
+
+```java
+public interface AuthenticationProvider {
+
+	Authentication authenticate(Authentication authentication)
+			throws AuthenticationException;
+
+	boolean supports(Class<?> authentication);
+}
+```
+
+#### AbstractUserDetailsAuthenticationProvider
+
+AbstractUserDetailsAuthenticationProvider 通过 authenticate 进行用户认证, 且认证成功之后, 之后,信息封装到 Authentication 里面
+
+```java
+public abstract class AbstractUserDetailsAuthenticationProvider implements
+		AuthenticationProvider, InitializingBean, MessageSourceAware {
+
+	public Authentication authenticate(Authentication authentication)
+			throws AuthenticationException{
+		String username = (authentication.getPrincipal() == null) ? "NONE_PROVIDED"
+				: authentication.getName();		
+
+		user = retrieveUser(username,
+						(UsernamePasswordAuthenticationToken) authentication);
+
+		Object principalToReturn = user;
+
+		return createSuccessAuthentication(principalToReturn, authentication, user);
+	}
+
+
+	protected abstract UserDetails retrieveUser(String username,
+			UsernamePasswordAuthenticationToken authentication)
+			throws AuthenticationException;
+
+	protected Authentication createSuccessAuthentication(Object principal,
+			Authentication authentication, UserDetails user) {
+		UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(
+				principal, authentication.getCredentials(),
+				authoritiesMapper.mapAuthorities(user.getAuthorities()));
+		result.setDetails(authentication.getDetails());
+
+		return result;
+	}
+}
+```
+
+#### DaoAuthenticationProvider
+
+调用了`UserDetailsService` 接口,
+
+```java
+public class DaoAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
+
+	private UserDetailsService userDetailsService;
+
+	protected final UserDetails retrieveUser(String username,
+			UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
+		
+		UserDetails loadedUser = this.getUserDetailsService().loadUserByUsername(username);
+		
+		return loadedUser;
+	}
+}
+```
+
+### UserDetails & UserDetailsService
+
+* UserDetails
+
+用户信息,包括权限, 用户名, 密码,账号是否过期,账号是否被锁定,密码是否过期,账号是否可用等
+
+* UserDetailsService
+
+获取用户信息: UserDetails loadUserByUsername(String username);
+
+
+### Authentication
+
+看图, 这个是根据用户认证方式来划分多种存储用户认证成功之后的信息
+
+```uml
+@startuml
+
+	Interface Authentication 
+	Class AbstractAuthenticationToken
+	Class UsernamePasswordAuthenticationToken
+	Class AnonymousAuthenticationToken
+
+ 	Authentication <|-- AbstractAuthenticationToken
+ 	AbstractAuthenticationToken <|-- UsernamePasswordAuthenticationToken 
+ 	AbstractAuthenticationToken <|-- AnonymousAuthenticationToken 
+	
+
+@enduml
+```
+
+#### Authentication
+
+```java
+public interface Authentication extends Principal, Serializable {
+
+	Collection<? extends GrantedAuthority> getAuthorities();
+
+	Object getCredentials();
+
+	Object getDetails();
+
+	Object getPrincipal();
+
+	boolean isAuthenticated();
+
+	void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException;
+}
+```
+
+
+GrantedAuthority: 授权
+
+AccessDecisionManager
+
 
 ### 配置
+
 WebSecurityConfiguration
+
 WebSecurity
 
 ### authentication - 认证
@@ -18,7 +226,6 @@ WebSecurity
 
 主要的操作,都在`VirtualFilterChain` 下的  `doFilter` 里面执行
 
-这里 我认为比较重要的代码，所有有些地方可能看起来不是那么顺畅
 ```java
 public class FilterChainProxy extends GenericFilterBean {
 
