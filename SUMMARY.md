@@ -7,6 +7,8 @@
 ## spring
 * [spring security](spring/spring-security.md)
 * [spring jpa](spring/spring-jpa.md)
+    * [基本注解](spring/spring-jpa-base.md)
+    * [Converter](spring/spirng-jpa-converter.md)
 
 ## 设计模式
 * [创建型](creational/README.md)

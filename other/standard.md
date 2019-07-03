@@ -58,30 +58,6 @@ public class MenuServiceImpl implements MenuService {
 }
 ```
 
-### 关于Entity
-
-* 主键自增
-
-```java
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-```
-
-* 创建/更新时间
-
-```java
-// 表的类型 datetime 长度为0 小数点为 0
-@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-@CreationTimestamp
-
-```
-
-* 只有两种状态值
-
-```java
-// 表结构 tinyint 长度为 2  -> Boolean
- @Type(type = "org.hibernate.type.NumericBooleanType")
-```
-
 ### 工具类
 
 * String 类型处理
