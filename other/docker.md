@@ -85,6 +85,12 @@ docker rmi $(docker images -q)
 docker rmi -f $(docker images -q)
 ```
 
+* 查看镜像的构建
+
+```bash
+docker history node:9.3.0
+```
+
 ### 容器操作
 
 * 查看所有状态下的容器

@@ -9,7 +9,8 @@
     "prism",
     "copy-code-button",
     "chapter-fold",
-    "tbfed-pagefooter"
+    "tbfed-pagefooter",
+    "uml"
   ],
   "pluginsConfig": {
     "anchor-navigation-ex": {
@@ -35,6 +36,10 @@
       "copyright": "Copyright &copy dsx2016.com 2019",
       "modify_label": "该文章修订时间：",
       "modify_format": "YYYY-MM-DD HH:mm:ss"
+    },
+    "uml": {
+      "format": "png",
+      "nailgun": false
     }
   }
 }
