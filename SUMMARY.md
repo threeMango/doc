@@ -17,6 +17,9 @@
 * [结构型](struct/README.md)
     * [装饰者](struct/decorator.md)
     * [代理模式](struct/proxy.md)
+    * [享元模式](struct/flyweight.md)
+* [行为型](behavioral/README.md)
+    * [状态模式](behavioral/state.md)
 
 ## 快速查询
 * [GIT](other/git.md)
