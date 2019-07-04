@@ -78,6 +78,19 @@ public class MenuServiceImpl implements MenuService {
 
 * 方法粒度小, 方便测试,也方便后台在线上,通过url 来进行测试
 
+### 逻辑
+
+#### 消除if else
+
+* 看下是否可以用map 来代替if判断
+
+* 是否可以用 Assert 来代替判读
+
+* 看下是否可以通过工厂方法消除
+
+#### 对象
+
+* 如果一个对象创建比较频繁, 是否可以用map 来进行存储
 
 
 
