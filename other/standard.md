@@ -74,6 +74,10 @@ public class MenuServiceImpl implements MenuService {
 
 * mysql 只存储一些关键的数据, 减少数据库中的数据, 其他的一些数据,可以在需要使用的时候,在通过接口去第三方数据中获取
 
+### 测试
+
+* 方法粒度小, 方便测试,也方便后台在线上,通过url 来进行测试
+
 
 
 
