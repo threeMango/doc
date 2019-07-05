@@ -27,6 +27,36 @@ gitbook serve
 
 ## 附录
 
+### uml 插件
+
+* Dockerfile
+
+```java
+FROM node
+
+MAINTAINER 79149974@qq.com
+
+WORKDIR ./gitbook
+
+RUN npm --registry https://registry.npm.taobao.org install gitbook-cli -g
+
+RUN apt-get dist-upgrade &&  apt-get update && apt-get install build-essential && apt-get -y install default-jre
+
+RUN gitbook init
+
+EXPOSE 4000
+
+```
+
+* 需要安装这个
+
+```json
+apt-get dist-upgrade
+apt-get update
+apt-get install build-essential
+apt install graphviz
+```
+
 ### book.json
 
 ```json

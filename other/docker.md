@@ -72,6 +72,12 @@ $ sudo systemctl start docker
 docker images
 ```
 
+* 拉取镜像
+
+```bash
+docker pull centos
+```
+
 * 删除镜像(如果有容器是靠这个镜像来的,需要先停止)
 
 ```bash
@@ -163,6 +169,74 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 $ docker-compose --version
+```
+
+### 创建gitbook 镜像 在centos 集成上
+
+* 拉取镜像
+
+```bash
+docker pull centos
+```
+
+* 启动
+
+```bash
+docker run -d -i -t centos /bin/bash
+```
+
+* 安装node
+
+```bash
+yum install epel-release
+yum install nodejs
+yum install npm
+```
+
+* 安装git
+
+```bash
+yum install git
+```
+
+* 配置git
+```bash
+git config --global user.name siberia
+git config --global user.email 791499074@qq.com
+git config --global core.editor vim
+git config --global merge.tool vimdiff
+```
+
+* 安装gitbook
+
+```bash
+npm install gitbook -g
+npm install -g gitbook-cli
+ln -s /usr/local/node/bin/* /usr/sbin/
+```
+
+* gitbook 中uml 插件特殊
+
+```bash
+yum install graphviz
+```
+
+* Dockerfile 文件
+```java
+FROM centos
+
+MAINTAINER 79149974@qq.com
+
+WORKDIR ./gitbook
+
+RUN yum install epel-release && yum install nodejs && yum install npm
+
+RUN npm --registry https://registry.npm.taobao.org install gitbook-cli -g
+
+RUN gitbook init
+
+EXPOSE 4000
+
 ```
 
 
