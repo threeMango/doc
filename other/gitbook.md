@@ -14,8 +14,9 @@ info: initialization is finished
 
 * 安装插件
 
+安装插件
+
 ```bash
-# 根据book.json 安装插件
 gitbook install
 ```
 
@@ -26,6 +27,24 @@ gitbook serve
 ```
 
 ## 附录
+
+### Dockerfile 搭建环境
+
+```bash
+FROM node
+
+MAINTAINER 79149974@qq.com
+
+WORKDIR ./gitbook
+
+RUN npm --registry https://registry.npm.taobao.org install gitbook-cli -g
+
+RUN apt-get dist-upgrade &&  apt-get update && apt-get install build-essential && apt -y install graphviz && apt-get -y install default-jre
+
+RUN gitbook init
+
+EXPOSE 4000
+```
 
 ### book.json
 
