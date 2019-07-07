@@ -2,6 +2,25 @@
 
 作用: 认证, 授权, 安全防护(防止csrf跨站伪攻击等)
 
+## 疑问
+
+```uml
+@startmindmap
+* Debian
+** Ubuntu
+*** Linux Mint
+*** Kubuntu
+*** Lubuntu
+*** KDE Neon
+** LMDE
+** SolydXK
+** SteamOS
+** Raspbian with a very long name
+*** <s>Raspmbc</s> => OSMC
+*** <s>Raspyfi</s> => Volumio
+@endmindmap
+```
+
 ## 认证流程
 
 ```uml
