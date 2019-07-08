@@ -1,0 +1,53 @@
+```uml
+@startmindmap
+* Debian
+** Ubuntu
+*** Linux Mint
+*** Kubuntu
+*** Lubuntu
+*** KDE Neon
+** LMDE
+** SolydXK
+** SteamOS
+** Raspbian with a very long name
+*** <s>Raspmbc</s> => OSMC
+*** <s>Raspyfi</s> => Volumio
+@endmindmap
+```,```uml
+@startuml
+
+user -> UsernamePasswordAuthenticationFilter: request
+UsernamePasswordAuthenticationFilter -> user: response
+
+@enduml
+```,```uml
+@startuml
+
+	Interface AuthenticationManager 
+	Class ProviderManager
+
+	Interface AuthenticationProvider
+	Class AbstractUserDetailsAuthenticationProvider
+	Class DaoAuthenticationProvider
+
+ 	AuthenticationManager <|.down. ProviderManager
+ 	ProviderManager o-right- AuthenticationProvider 
+	AuthenticationProvider <|.down. AbstractUserDetailsAuthenticationProvider 
+	AbstractUserDetailsAuthenticationProvider <|-down- DaoAuthenticationProvider
+
+@enduml
+```,```uml
+@startuml
+
+	Interface Authentication 
+	Class AbstractAuthenticationToken
+	Class UsernamePasswordAuthenticationToken
+	Class AnonymousAuthenticationToken
+
+ 	Authentication <|-- AbstractAuthenticationToken
+ 	AbstractAuthenticationToken <|-- UsernamePasswordAuthenticationToken 
+ 	AbstractAuthenticationToken <|-- AnonymousAuthenticationToken 
+	
+
+@enduml
+```

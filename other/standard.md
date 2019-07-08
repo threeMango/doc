@@ -97,8 +97,16 @@ public class MenuServiceImpl implements MenuService {
 * 如果一个对象创建比较频繁, 是否可以用map 来进行存储
 
 
+### 技术栈
 
+#### 工具类
 
-
+```xml
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>28.0-jre</version>
+        </dependency>
+```
 
 
