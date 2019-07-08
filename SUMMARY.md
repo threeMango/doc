@@ -19,6 +19,7 @@
     * [代理模式](struct/proxy.md)
     * [享元模式](struct/flyweight.md)
 * [行为型](behavioral/README.md)
+    * [策略模式](behavioral/strategy.md)
     * [状态模式](behavioral/state.md)
 
 ## 快速查询
