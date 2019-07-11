@@ -229,9 +229,13 @@ MAINTAINER 79149974@qq.com
 
 WORKDIR ./gitbook
 
-RUN yum install epel-release && yum install nodejs && yum install npm
+RUN yum -y install epel-release && yum -y install nodejs && yum install npm
 
-RUN npm --registry https://registry.npm.taobao.org install gitbook-cli -g
+RUN yum -y install git && git config --global user.name siberia && git config --global user.email 791499074@qq.com && git config --global core.editor vim && git config --global merge.tool vimdiff
+
+RUN npm install gitbook -g && npm install -g gitbook-cli
+
+RUN yum -y install graphviz
 
 RUN gitbook init
 

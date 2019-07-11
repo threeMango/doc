@@ -34,6 +34,7 @@
 * [A-ab](english/a_ab.md)
 
 ## 附录
+* [词汇](other/word.md)
 * [规范](other/standard.md)
 * [JAVA参数校验](java/paramsCheck.md)
 * [JWT](other/jwt.md)
