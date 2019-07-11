@@ -2,35 +2,69 @@
 
 作用: 认证, 授权, 安全防护(防止csrf跨站伪攻击等)
 
-## 疑问
+看了几天的spring security 源码,以及一些博客上的一些文字,在加上搭建了一下spring security的一个授权认证组件
 
-```uml
-@startmindmap
-* Debian
-** Ubuntu
-*** Linux Mint
-*** Kubuntu
-*** Lubuntu
-*** KDE Neon
-** LMDE
-** SolydXK
-** SteamOS
-** Raspbian with a very long name
-*** <s>Raspmbc</s> => OSMC
-*** <s>Raspyfi</s> => Volumio
-@endmindmap
-```
+以下是自己的一些关于spring security 的笔记
 
-## 认证流程
+## 
+
+## 认证授权流程
+
+UsernamePasswordAuthenticationFilter: 只是其中一种认证方式而已
 
 ```uml
 @startuml
 
-user -> UsernamePasswordAuthenticationFilter: request
-UsernamePasswordAuthenticationFilter -> user: response
+(*) --> [entry VirtualFilterChain]FilterChainProxy
+FilterChainProxy --> UsernamePasswordAuthenticationFilter 
+UsernamePasswordAuthenticationFilter --> [entry authorization]AbstractSecurityInterceptor
+AbstractSecurityInterceptor --> [decide]AccessDecisionManager
+FilterInvocationSecurityMetadataSource -->[authentication resource]AbstractSecurityInterceptor 
+AccessDecisionManager--> (*)
 
 @enduml
 ```
+
+## 答疑
+
+* 在什么时候时候调用了 `UserDetailsService`
+
+在 `DaoAuthenticationProvider`, 这里调用
+
+```uml
+@startuml
+
+	Interface AuthenticationManager 
+	Class ProviderManager
+
+	Interface AuthenticationProvider
+	Class AbstractUserDetailsAuthenticationProvider
+	Class DaoAuthenticationProvider
+
+ 	AuthenticationManager <|.down. ProviderManager
+ 	ProviderManager o-right- AuthenticationProvider 
+	AuthenticationProvider <|.down. AbstractUserDetailsAuthenticationProvider 
+	AbstractUserDetailsAuthenticationProvider <|-down- DaoAuthenticationProvider
+
+@enduml
+```
+
+* 在`FilterChainProxy` 中的 `filterChains` 保存了关于一个请求所需要经过处理的过滤链,那么这个过滤链是什么时候加载的？
+
+`WebSecurityConfiguration` 中的 `springSecurityFilterChain` 生成了一个名字叫做 `springSecurityFilterChain`
+
+* 一个url 是否允许访问, 由那些地方控制?
+
+	1. 通过数据库加载配置
+
+	2. 通过spring security 的配置
+
+* 认证完成之后,下一个请求还会走认证流程吗？
+
+不会了,是否走认证流程是由设置在`login`的url来判断的,如何url和设置的一直,那么就会走认证流程
+
+认证流程走完了之后,走授权流程
+
 
 ## 核心类
 
