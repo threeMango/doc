@@ -1,5 +1,23 @@
 # 英语
 
+## 系动词
+
+系动词不能单独做谓语, 后面必须跟表语
+
+表语用来表述主语,中间用系动词来链接
+
+```uml
+@startuml
+left to right direction
+
+card root as "link verb(系动词)"
+card be as "am/is/are"
+
+root --> be
+
+@enduml
+```
+
 ## 时态
 
 ||一般式|进行式|完成式|完成进行式|
