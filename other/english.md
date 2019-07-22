@@ -1,6 +1,68 @@
-# 英语词汇
+# 英语
 
-## spring secuirty
+## 系动词
+
+系动词不能单独做谓语, 后面必须跟表语
+
+表语用来表述主语,中间用系动词来链接
+
+```uml
+@startuml
+left to right direction
+
+card root as "link verb(系动词)"
+card be as "am/is/are"
+
+root --> be
+
+@enduml
+```
+
+## 时态
+
+||一般式|进行式|完成式|完成进行式|
+|:--:|:--:|:--:|:--:|:--:|
+|现在|do|am/is/are doing|has/have done|has/have been doing|
+|过去|did|was/were doing|had done|hand been doing|
+|将来|will do / be going to do / shall do|will be doing|will have done|will have bee doing|
+|过去将来|would do |would be doing|would have done|would have be doing|
+
+点时态： 某特定时间发送的事情
+段时态： 过程感
+
+### 动词的变化规则
+
+* 第三人称单数(第三人称一般现在时)
+    * 一般情况下由动词后加-s构成：work / works，read / reads等
+    * 以s, x, z, sh, ch 以及字母o结构的动词，后加-es：guess / guesses, mix / mixes, go / goes, buzz / buzzes, finish / finishes, catch / catches等
+    * 以辅音字母+ y 结尾的动词，先把y变为i，再加es 
+    * 不规则  have - has   be - is
+    
+* 动词过去式(一般过去式)/过去分词(被动语态、完成时态)变化规则
+    * 一般在动词末尾加-ed，如：pull-pulled, cook-cooked
+    * 结尾是e加d，如：taste-tasted
+    * 末尾只有一个元音字母和一个辅音字母的重读闭音节，应双写末尾的辅音字母，再加-ed，如：stop-stopped
+    * 以“辅音字母+y”结尾的，变y为i， 再加-ed，如：study-studied
+    * ```
+     am,is-was  are-were  do-did   see-saw     say-said  give-gave       get-got     go-went  come-came have-had eat-ate     take-took   run-ran     sing-sang   put-put     make-made read-read write-wrote    draw-drew drink-drank fly-flewride-rode  speak-spoke sweep-swept         swim-swam sit-sat
+    ```
+
+* 现在分词(进行时态)
+    * 在动词原形后直接加-ing look-looking cook-cooking read-reading
+    * 以不发音字母e结尾的动词 ，去掉e再加-ing  write-writing live-living
+    * 以重读闭音节结尾且末尾只有一个辅音字母的动词，双写该辅音字母后再加-ing  begin-beginning swim-swimming sit-sitting
+    * 少数几个以ie结尾的动词，要变ie为y，再加-ing  tie-tying die-dying lie-lying
+
+
+## 词汇
+
+### 参考
+
+#### 个体
+
+gender： 性别
+
+### spring secuirty
 
 ```java
 

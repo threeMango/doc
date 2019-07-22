@@ -30,8 +30,16 @@
 * [nginx](other/nginx.md)
 * [UML](other/uml.md)
 
+<<<<<<< HEAD
+=======
+## 业务
+* [会员卡](card/README.md)
+    * [支付宝会员卡](card/aliCard.md)
+    * [微信会员卡](card/wxCard.md)
+
+>>>>>>> c1613c0dcc9a3b05b71b7edd9e32be58d91bf892
 ## 附录
-* [词汇](other/word.md)
+* [英语](other/english.md)
 * [规范](other/standard.md)
 * [JAVA参数校验](java/paramsCheck.md)
 * [JWT](other/jwt.md)

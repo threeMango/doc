@@ -39,7 +39,8 @@
     },
     "uml": {
       "format": "png",
-      "nailgun": false
+      "nailgun": false,
+      "charset": "utf-8"
     }
   }
 }
