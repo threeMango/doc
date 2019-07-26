@@ -9,12 +9,32 @@
 1. 需要在 controller 接受实体的那个地方用`@Valid` ，否则不会验证
 2. 验证嵌套, 在需要验证的字段之上在加上`@Valid`
 
+常用的
+1. 不能为null，且Size>0 
 ```java
-// 是否为空 javax.validation.constraints 这个包下有一些基本的,可以看下
 @NotEmpty
-
 ```
 
+2. 不能为null，但可以为empty,没有Size的约束 
+
+```java
+@NotNull
+```
+
+3. 只用于String,不能为null且trim()之后size>0
+
+```java
+ @NotBlank(message = "权限code 必填")
+```
+
+4. 正则表达式
+
+```java
+@Pattern
+```
+
+
+## 附录
 
 ### 自定义验证器
 

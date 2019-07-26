@@ -7,6 +7,7 @@
 ## spring
 * [spring security](spring/spring-security.md)
 * [spring jpa](spring/spring-jpa.md)
+    * [问题](spring/spring-jpa-question.md)
     * [基本注解](spring/spring-jpa-base.md)
     * [Converter](spring/spirng-jpa-converter.md)
 
@@ -30,14 +31,6 @@
 * [nginx](other/nginx.md)
 * [UML](other/uml.md)
 
-<<<<<<< HEAD
-=======
-## 业务
-* [会员卡](card/README.md)
-    * [支付宝会员卡](card/aliCard.md)
-    * [微信会员卡](card/wxCard.md)
-
->>>>>>> c1613c0dcc9a3b05b71b7edd9e32be58d91bf892
 ## 附录
 * [英语](other/english.md)
 * [规范](other/standard.md)

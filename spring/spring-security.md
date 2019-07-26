@@ -1,10 +1,5 @@
 # spring security
 
-作用: 认证, 授权, 安全防护(防止csrf跨站伪攻击等)
-
-看了几天的spring security 源码,以及一些博客上的一些文字,在加上搭建了一下spring security的一个授权认证组件
-
-以下是自己的一些关于spring security 的笔记
 
 ## 
 
@@ -69,6 +64,71 @@ AccessDecisionManager--> (*)
 
 ---
 
+* 如何在一个filter前添加一个自定义filter 以及 把官方的替换成自定义的
+
+```java
+	/**
+	 * 1, 用自定义的 myUsernamePasswordAuthenticationFilter 替换掉原来的
+	 * UsernamePasswordAuthenticationFilter
+	 * 2. 在 FilterSecurityInterceptor 之前添加两个filter
+	 * 
+	 * addFilterAt 在原有filter 用配置的filter 来代替
+	 * addFilterBefore 在原有 filter 之前添加一个filter
+	 */
+	
+	@Autowired
+    private CustomFilterSecurityInterceptor customFilterSecurityInterceptor;
+
+ 	@Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.addFilterAt(myUsernamePasswordAuthenticationFilter(),
+                UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(customFilterSecurityInterceptor,
+                FilterSecurityInterceptor.class);
+        http.addFilterBefore(jwtAuthenticationTokenFilter(),
+                FilterSecurityInterceptor.class);
+	}
+	
+	/** bean */
+
+	/**
+     * 自定义用户验证码
+     *
+     * @return
+     * @throws Exception
+     */
+    @Bean
+    public UsernamePasswordAuthenticationFilter myUsernamePasswordAuthenticationFilter() throws Exception {
+        return new CustomUsernamePasswordAuthenticationFilter(authenticationManagerBean(),
+                myAuthenticationSuccessHandler(),
+                myAuthenticationFailureHandler());
+	}
+	
+	 /**
+     * 注册jwt 认证
+     * @return
+     * @throws Exception
+     */
+    @Bean
+    public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter() {
+
+       return new JwtAuthenticationTokenFilter();
+    }
+
+```
+
+结果
+![20190725155444](./assets/20190725155444.png)
+
+---
+
+* 什么时候加载filter?
+
+WebSecurityConfiguration 这里 注册了一个bean 且beanname = springSecurityFilterChain
+
+通过 beanname 找到 AbstractSecurityWebApplicationInitializer 下的insertSpringSecurityFilterChain()
+
+![20190725163152](./assets/20190725163152.png)
 
 ## 核心类
 
