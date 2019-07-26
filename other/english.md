@@ -32,6 +32,8 @@ root --> be
 
 ### 动词的变化规则
 
+* 影响因素： 人称,时态
+
 * 第三人称单数(第三人称一般现在时)
     * 一般情况下由动词后加-s构成：work / works，read / reads等
     * 以s, x, z, sh, ch 以及字母o结构的动词，后加-es：guess / guesses, mix / mixes, go / goes, buzz / buzzes, finish / finishes, catch / catches等
