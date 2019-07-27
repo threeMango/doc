@@ -27,15 +27,13 @@
 数据传输用DTO, 输出传到前台显示用 VO, 和表实现映射的用 Entity
 
 
-### 关于异常抛出
+## 关于异常抛出
 
 使用spring 中的Assert, 这个可以减少if判断
 
 ```java
 import org.springframework.util.Assert;
 ```
-
-### 日志
 
 ### 插件
 
