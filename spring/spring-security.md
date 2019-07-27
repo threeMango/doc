@@ -3,6 +3,12 @@
 
 ## 
 
+认证异常
+AuthenticationException
+
+授权异常
+AccessDeniedException
+
 ## 认证授权流程
 
 UsernamePasswordAuthenticationFilter: 只是其中一种认证方式而已
