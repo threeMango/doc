@@ -15,7 +15,6 @@
 ```java
 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 @CreationTimestamp
-
 ```
 
 * 只有两种状态值
