@@ -38,6 +38,7 @@
         * [Unit1](english/grammer/Unit1.md)
     * [word]
         * [spring-security](english/word/spring_security.md)
+        * [git](english/word/git.md)
 * [规范](other/standard.md)
 * [JAVA参数校验](java/paramsCheck.md)
 * [JWT](other/jwt.md)
