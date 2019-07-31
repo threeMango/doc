@@ -1,0 +1,36 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\cjn\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add gitbook-gdf
+
+PATH: 
+  D:\context\jdk\jdk1_8\bin;D:\context\maven\apache-maven-3.5.2\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;D:\context\MySQL\MySQL Server 5.5\bin;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;D:\tools\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\tools\go;D:\context\gradle-4.10.1\bin;D:\develop\ad09\System;C:\Program Files\VanDyke Software\Clients\;D:\tools\cmder_mini_4;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\tools\jad;D:\tools\PuTTY\;C:\Users\cjn\.windows-build-tools\python27\;C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\cjn\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\cjn\AppData\Roaming\npm\node_modules\.bin;D:\context\jdk\jdk1_8\bin;D:\context\maven\apache-maven-3.5.2\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;D:\context\MySQL\MySQL Server 5.5\bin;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;D:\tools\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\tools\TortoiseGit\bin;D:\tools\go;D:\context\gradle-4.10.1\bin;D:\develop\ad09\System;C:\Program Files\VanDyke Software\Clients\;D:\tools\cmder_mini_4;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Users\cjn\AppData\Local\Microsoft\WindowsApps;D:\tools\Bandizip\;C:\Users\cjn\AppData\Local\Microsoft\WindowsApps;C:\Users\cjn\AppData\Roaming\npm
+
+Yarn version: 
+  1.16.0
+
+Node version: 
+  11.13.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: http://registry.cnpmjs.org/gitbook-gdf: [not_found] document not found
+      at Request.params.callback [as _callback] (C:\Users\cjn\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66091:18)
+      at Request.self.callback (C:\Users\cjn\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:129590:22)
+      at Request.emit (events.js:193:13)
+      at Request.<anonymous> (C:\Users\cjn\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:130562:10)
+      at Request.emit (events.js:193:13)
+      at Gunzip.<anonymous> (C:\Users\cjn\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:130484:12)
+      at Object.onceWrapper (events.js:281:20)
+      at Gunzip.emit (events.js:198:15)
+      at endReadableNT (_stream_readable.js:1142:12)
+      at processTicksAndRejections (internal/process/task_queues.js:81:17)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
